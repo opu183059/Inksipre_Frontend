@@ -77,7 +77,7 @@ const MainNavbar = () => {
           )}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="text-black dark:text-white text-2xl"
+            className="text-black dark:text-gray-50 text-2xl"
           >
             {darkMode ? <IoMoon /> : <IoSunny />}
           </button>

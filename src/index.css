@@ -95,3 +95,12 @@
     opacity: 1;
     width: 120%;
   }
+
+  /* ant design design changes */
+  .ant-modal-content{
+    padding: 0 !important;
+  }
+  .ant-modal-close{
+    color: white !important;
+
+  }

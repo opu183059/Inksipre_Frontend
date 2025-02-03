@@ -9,7 +9,7 @@ const Categories = () => {
   return (
     <div className="bg-primary">
       <div className="container py-10">
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <CategoryCard icon={<TfiWrite size={30} />} category="Writing" />
           <CategoryCard
             icon={<PiBuildingOffice size={30} />}
