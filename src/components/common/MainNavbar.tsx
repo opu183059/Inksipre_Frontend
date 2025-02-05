@@ -5,14 +5,18 @@ import Logo from "../../assets/Logo";
 import { useEffect, useState } from "react";
 import { IoSunny } from "react-icons/io5";
 import { IoMoon } from "react-icons/io5";
+import { logout, selectCurrentUser } from "../../redux/feature/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const MainNavbar = () => {
   const [open, setOpen] = useState(false);
 
-  const user = {
-    name: "John Doe",
-    avatar:
-      "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+  const dispatch = useAppDispatch();
+
+  const user = useAppSelector(selectCurrentUser);
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   const menu = (
@@ -21,7 +25,7 @@ const MainNavbar = () => {
       <Menu.Item key="profile">Profile</Menu.Item>
       <Menu.Item key="settings">Settings</Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="logout" className="text-red-500">
+      <Menu.Item key="logout" className="text-red-500" onClick={handleLogout}>
         Logout
       </Menu.Item>
     </Menu>
@@ -69,11 +73,18 @@ const MainNavbar = () => {
                 open={open}
                 onOpenChange={(flag) => setOpen(flag)}
               >
-                <Avatar src={user.avatar} />
+                <Avatar
+                  src="https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg"
+                  className="cursor-pointer"
+                />
               </Dropdown>
             </div>
           ) : (
-            <Button type="primary">Login</Button>
+            <Link to={"/login"}>
+              <Button type="primary" className="btn10">
+                Login
+              </Button>
+            </Link>
           )}
           <button
             onClick={() => setDarkMode(!darkMode)}
