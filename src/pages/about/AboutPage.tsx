@@ -1,11 +1,7 @@
 import React from "react";
 
 const AboutPage = () => {
-  return (
-    <div>
-      <h1 className="text-8xl text-blue-700 text-center">This is About Page</h1>
-    </div>
-  );
+  return <div>This is About Page</div>;
 };
 
 export default AboutPage;

@@ -6,7 +6,7 @@ function App() {
   // const dispatch = useDispatch();
 
   return (
-    <div className="min-h-screen text-primary">
+    <div className="min-h-screen text-primary bg-primary">
       <MainLayout />
     </div>
   );

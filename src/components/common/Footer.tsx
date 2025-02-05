@@ -7,7 +7,7 @@ const Footer = () => {
   // const date = new Date().getFullYear;
   // console.log(date.getFullYear());
   return (
-    <div className="bg-primary text-primary py-4">
+    <div className="py-6 custom-shadow">
       <div className="container flex md:justify-between flex-col md:flex-row">
         <div className="left md:w-8/12 text-center md:text-left flex flex-col items-center md:items-start">
           <div>

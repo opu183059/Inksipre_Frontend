@@ -7,8 +7,8 @@
   --btn-secondary-color: #ca42ff; 
 }
 .dark {
-  --btn-primary-color: #2d16c5; 
-  --btn-secondary-color: #5a087a; 
+  --btn-primary-color: #9316c5; 
+  --btn-secondary-color: #ca42ff; 
 }
 
 *{
@@ -16,6 +16,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: poppins;
+}
+
+.btn{
+  background-color: var(--btn-secondary-color) !important;
+}
+.btn:hover{
+  background-color: var(--btn-primary-color) !important;
 }
 
 /* button animation  */
@@ -102,5 +109,8 @@
   }
   .ant-modal-close{
     color: white !important;
+  }
 
+  .custom-shadow{
+    box-shadow: rgb(0, 0, 0) 0px 3px 3px 0px , rgb(219, 219, 219) 0px -3px 3px 1px ;
   }

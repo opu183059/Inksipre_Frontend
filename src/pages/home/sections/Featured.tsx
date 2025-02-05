@@ -5,11 +5,11 @@ import FeaturedCard from "../../../components/cards/FeaturedCard";
 const Featured = () => {
   const feature = [1, 2, 3, 4];
   return (
-    <div className="bg-primary pb-10">
+    <div className="pb-10">
       <p className="text-center text-2xl font-playwrite font-bold mb-6">
         New Arrivals
       </p>
-      <div className="container grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
         {feature.map((item) => (
           <FeaturedCard key={item} />
         ))}
