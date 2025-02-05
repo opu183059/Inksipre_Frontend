@@ -8,6 +8,10 @@ import BlogPage from "../pages/blog/BlogPage";
 import SingleProduct from "../pages/products/SingleProduct";
 import LoginPage from "../pages/authorization/LoginPage";
 import RegisterPage from "../pages/authorization/RegisterPage";
+import Dashboard from "../pages/dashboard/Dashboard";
+import PageA from "../pages/dashboard/PageA";
+import PageB from "../pages/dashboard/PageB";
+import ProtectedRoute from "../layouts/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +46,25 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/dashboard/a",
+        element: <PageA />,
+      },
+      {
+        path: "/dashboard/b",
+        element: <PageB />,
       },
     ],
   },

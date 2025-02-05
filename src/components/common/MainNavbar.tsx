@@ -1,12 +1,14 @@
-import { Avatar, Button, Dropdown, Menu } from "antd";
+import { Avatar, Badge, Button, Dropdown, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { mainMenu } from "../menu/mainMenu";
 import Logo from "../../assets/Logo";
 import { useEffect, useState } from "react";
 import { IoSunny } from "react-icons/io5";
 import { IoMoon } from "react-icons/io5";
+import { FiShoppingCart } from "react-icons/fi";
 import { logout, selectCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { selectCurrentCrt } from "../../redux/feature/cart/cartSlice";
 
 const MainNavbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,6 +16,7 @@ const MainNavbar = () => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector(selectCurrentUser);
+  const cartItem = useAppSelector(selectCurrentCrt);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -21,7 +24,9 @@ const MainNavbar = () => {
 
   const menu = (
     <Menu className="w-48">
-      <Menu.Item key="dashboard">Dashboard</Menu.Item>
+      <Menu.Item key="dashboard">
+        <Link to={"/dashboard"}>Dashboard</Link>
+      </Menu.Item>
       <Menu.Item key="profile">Profile</Menu.Item>
       <Menu.Item key="settings">Settings</Menu.Item>
       <Menu.Divider />
@@ -66,7 +71,19 @@ const MainNavbar = () => {
         </div>
         <div className="flex gap-4 items-center">
           {user ? (
-            <div className="flex items-center">
+            <div className="flex items-baseline gap-4">
+              <Link to={"/dashboard/cart"}>
+                <Badge
+                  size="small"
+                  count={cartItem.reduce(
+                    (total, item) => total + item.quantity,
+                    0
+                  )}
+                  overflowCount={20}
+                >
+                  <FiShoppingCart size={22} />
+                </Badge>
+              </Link>
               <Dropdown
                 overlay={menu}
                 trigger={["hover"]}
@@ -81,7 +98,10 @@ const MainNavbar = () => {
             </div>
           ) : (
             <Link to={"/login"}>
-              <Button type="primary" className="btn10">
+              <Button
+                type="primary"
+                className="btn10 !text-black hover:!text-gray-50"
+              >
                 Login
               </Button>
             </Link>

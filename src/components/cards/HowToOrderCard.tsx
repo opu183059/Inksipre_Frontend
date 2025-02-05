@@ -1,4 +1,4 @@
-import { howToOrderCardProps } from "../../types/howToOrderCardProps";
+import { howToOrderCardProps } from "../../types/howToOrderCardProps.type";
 
 const HowToOrderCard = (CardData: howToOrderCardProps) => {
   const { image, title, description } = CardData;

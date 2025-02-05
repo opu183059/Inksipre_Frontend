@@ -1,15 +1,12 @@
 import "./App.css";
 import MainLayout from "./layouts/MainLayout";
 
-function App() {
-  // const count = useSelector((state: RootState) => state.counter.value);
-  // const dispatch = useDispatch();
-
+const App = () => {
   return (
     <div className="min-h-screen text-primary bg-primary">
       <MainLayout />
     </div>
   );
-}
+};
 
 export default App;

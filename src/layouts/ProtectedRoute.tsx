@@ -6,10 +6,9 @@ import { Navigate } from "react-router-dom";
 
 type TProtectedRoute = {
   children: ReactNode;
-  userRole: string | undefined;
 };
 
-const ProtectedRoute = ({ children, userRole }: TProtectedRoute) => {
+const ProtectedRoute = ({ children }: TProtectedRoute) => {
   const token = useAppSelector(useCurrentToken);
 
   let user;
@@ -18,7 +17,7 @@ const ProtectedRoute = ({ children, userRole }: TProtectedRoute) => {
     user = verifyToken(token);
   }
 
-  console.log("user: ", user, "Role: ", userRole);
+  console.log("user: ", user);
 
   //   const dispatch = useAppDispatch();
 

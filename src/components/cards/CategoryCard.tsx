@@ -1,4 +1,4 @@
-import { categoryCardProps } from "../../types/categoryCardProps";
+import { categoryCardProps } from "../../types/categoryCardProps.type";
 
 const CategoryCard = ({ category, icon }: categoryCardProps) => {
   return (

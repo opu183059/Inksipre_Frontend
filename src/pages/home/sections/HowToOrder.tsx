@@ -10,25 +10,25 @@ const HowToOrder = () => {
           </h1>
           <div className="w-full flex relative">
             <HowToOrderCard
-              title="agsdh"
+              title="Add to Cart"
               image="https://th.bing.com/th/id/OIP.JpBtWSdXKQEIRTPH7YCyxAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain"
-              description="lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit."
+              description="Browse our collection, select your favorite stationery items, and click “Add to Cart.” Once you’re done, go to your cart to review your selections."
             />
             <div className="w-7/12 rounded-[80px] hidden md:block absolute right-60 -bottom-36 border-t-4 border-r-4 h-60 border-gray-50"></div>
           </div>
           <div className="w-full flex md:justify-end my-16 relative">
             <HowToOrderCard
-              title="agsdh"
+              title="Checkout & Payment"
               image="https://5.imimg.com/data5/SELLER/Default/2022/12/VH/XL/RN/3056452/all-office-stationery-items-1000x1000.jpg"
-              description="gsadjv lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit."
+              description="Enter your shipping details, choose a payment method (Credit/Debit Card, UPI, Cash on Delivery, etc.), and confirm your order."
             />
             <div className="w-7/12 rounded-[80px] hidden md:block absolute right-60 -bottom-36 border-t-4 border-l-4 h-60 border-gray-50"></div>
           </div>
           <div className="w-full flex">
             <HowToOrderCard
-              title="agsdh"
+              title="Order Processing & Delivery"
               image="https://th.bing.com/th/id/OIP.nO2pqUYPCsLZ4TJRJ8N3rgAAAA?rs=1&pid=ImgDetMain"
-              description="gsadjv lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit. "
+              description="We’ll process your order and ship it as soon as possible. You’ll receive tracking details, and your order will be delivered to your doorstep."
             />
           </div>
         </div>
