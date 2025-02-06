@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { Button, InputNumber } from "antd";
+import { Button, InputNumber, message } from "antd";
 import { useGetSpecificProductsQuery } from "../../redux/feature/products/productApi";
 import { useAppDispatch } from "../../redux/hooks";
 import { addToCart } from "../../redux/feature/cart/cartSlice";
@@ -29,6 +29,7 @@ const SingleProduct = () => {
       quantity,
     };
     dispatch(addToCart(product));
+    message.success("Added to cart successfully");
   };
 
   return (

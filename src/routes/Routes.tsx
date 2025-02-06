@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
 import AboutPage from "../pages/about/AboutPage";
 import HomePage from "../pages/home/HomePage";
@@ -12,6 +12,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import PageA from "../pages/dashboard/PageA";
 import PageB from "../pages/dashboard/PageB";
 import ProtectedRoute from "../layouts/ProtectedRoute";
+import UserCartPage from "../pages/dashboard/user/cart/UserCartPage";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
+    path: "/admin/dashboard",
     element: (
       <ProtectedRoute>
         <Dashboard />
@@ -59,12 +60,35 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/dashboard/a",
+        path: "/admin/dashboard",
+        element: <Navigate to="/admin/dashboard/a" replace />,
+      },
+      {
+        path: "/admin/dashboard/a",
         element: <PageA />,
       },
       {
-        path: "/dashboard/b",
+        path: "/admin/dashboard/b",
         element: <PageB />,
+      },
+    ],
+  },
+  {
+    path: "/user/dashboard",
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/user/dashboard/cart",
+        element: <UserCartPage />,
+      },
+      {
+        path: "/user/dashboard/b",
+        element: <p>Page B</p>,
       },
     ],
   },

@@ -8,7 +8,7 @@ import { IoMoon } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
 import { logout, selectCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { selectCurrentCrt } from "../../redux/feature/cart/cartSlice";
+import { selectCurrentCart } from "../../redux/feature/cart/cartSlice";
 
 const MainNavbar = () => {
   const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ const MainNavbar = () => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector(selectCurrentUser);
-  const cartItem = useAppSelector(selectCurrentCrt);
+  const cartItem = useAppSelector(selectCurrentCart);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -25,7 +25,7 @@ const MainNavbar = () => {
   const menu = (
     <Menu className="w-48">
       <Menu.Item key="dashboard">
-        <Link to={"/dashboard"}>Dashboard</Link>
+        <Link to={`${user?.userRole}/dashboard`}>Dashboard</Link>
       </Menu.Item>
       <Menu.Item key="profile">Profile</Menu.Item>
       <Menu.Item key="settings">Settings</Menu.Item>

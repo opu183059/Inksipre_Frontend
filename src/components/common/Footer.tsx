@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo";
 import { mainMenu } from "../menu/mainMenu";
 import { footerMenu } from "../menu/footerMenu";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   // const date = new Date().getFullYear;
@@ -47,6 +50,27 @@ const Footer = () => {
             ))}
           </div>
         </div>
+      </div>
+      <p className="text-center mt-5 mb-2 uppercase">Follow US</p>
+      <div className="flex gap-4 justify-center">
+        <a href="#">
+          <FaFacebookF
+            size={20}
+            className="cursor-pointer w-7 h-7 p-1 rounded-full hover:bg-blue-500 hover:text-gray-50 duration-300"
+          />
+        </a>
+        <a href="#">
+          <FaXTwitter
+            size={20}
+            className="cursor-pointer w-7 h-7 p-1 rounded-full hover:bg-black hover:text-gray-50 duration-300"
+          />
+        </a>
+        <a href="#">
+          <FaWhatsapp
+            size={20}
+            className="cursor-pointer w-7 h-7 p-1 rounded-full hover:bg-green-800 hover:text-gray-50 duration-300"
+          />
+        </a>
       </div>
       <p className="text-center mt-5">
         &copy; {new Date().getFullYear()} All rights reserved |
