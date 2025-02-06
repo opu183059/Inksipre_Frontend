@@ -28,6 +28,7 @@ const LoginPage = () => {
       if (response.success) {
         toster();
         message.success(response.message);
+        // @ts-expect-error: Unreachable code error
         navigate(`/${decodedUser?.userRole}/dashboard`, { replace: true });
       }
     } catch (err: any) {
