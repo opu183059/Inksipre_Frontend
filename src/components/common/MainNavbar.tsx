@@ -72,7 +72,7 @@ const MainNavbar = () => {
         <div className="flex gap-4 items-center">
           {user ? (
             <div className="flex items-baseline gap-4">
-              <Link to={"/dashboard/cart"}>
+              <Link to={`${user?.userRole}/dashboard/cart`}>
                 <Badge
                   size="small"
                   count={cartItem.reduce(

@@ -26,26 +26,18 @@ const DashboardSidebar = () => {
     case userRole.ADMIN:
       sidebarItems = [
         {
-          key: "1",
-          label: "Admin",
-        },
-        {
-          key: "2",
-          label: "2",
+          key: "Order",
+          label: "Order",
           children: [
             {
-              key: "3",
-              label: "3",
+              key: "orders",
+              label: <Link to={"/admin/dashboard/all-orders"}>All Orders</Link>,
             },
-            {
-              key: "4",
-              label: "4",
-            },
+            // {
+            //   key: "update",
+            //   label: "Update Orders",
+            // },
           ],
-        },
-        {
-          key: "3",
-          label: "3",
         },
       ];
       break;
@@ -54,6 +46,10 @@ const DashboardSidebar = () => {
         {
           key: "cart",
           label: <Link to={"/user/dashboard/cart"}>Cart</Link>,
+        },
+        {
+          key: "orders",
+          label: <Link to={"/user/dashboard/orders"}>Orders</Link>,
         },
         {
           key: "profile",
@@ -92,7 +88,7 @@ const DashboardSidebar = () => {
         defaultSelectedKeys={["1"]}
         items={sidebarItems}
       />
-      <div className="mt-10 flex gap-3 items-center justify-center">
+      <div className="hidden  mt-10 md:flex gap-3 items-center justify-center">
         <Link
           to={"/"}
           className="bg-gray-50 text-black px-2 py-1 rounded-md hover:bg-blue-500 hover:text-gray-50 duration-300"

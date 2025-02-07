@@ -9,10 +9,11 @@ import SingleProduct from "../pages/products/SingleProduct";
 import LoginPage from "../pages/authorization/LoginPage";
 import RegisterPage from "../pages/authorization/RegisterPage";
 import Dashboard from "../pages/dashboard/Dashboard";
-import PageA from "../pages/dashboard/PageA";
-import PageB from "../pages/dashboard/PageB";
 import ProtectedRoute from "../layouts/ProtectedRoute";
 import UserCartPage from "../pages/dashboard/user/cart/UserCartPage";
+import VerifyOrderPage from "../pages/dashboard/user/order/VerifyOrderPage";
+import Orderpage from "../pages/dashboard/user/order/Orderpage";
+import AllOrders from "../pages/dashboard/admin/order/AllOrders";
 
 const router = createBrowserRouter([
   {
@@ -61,15 +62,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin/dashboard",
-        element: <Navigate to="/admin/dashboard/a" replace />,
+        element: <Navigate to="/admin/dashboard/all-orders" replace />,
       },
       {
-        path: "/admin/dashboard/a",
-        element: <PageA />,
-      },
-      {
-        path: "/admin/dashboard/b",
-        element: <PageB />,
+        path: "/admin/dashboard/all-orders",
+        element: <AllOrders />,
       },
     ],
   },
@@ -83,12 +80,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: "/user/dashboard",
+        element: <Navigate to="/user/dashboard/cart" replace />,
+      },
+      {
         path: "/user/dashboard/cart",
         element: <UserCartPage />,
       },
       {
-        path: "/user/dashboard/b",
-        element: <p>Page B</p>,
+        path: "/user/dashboard/verify-order",
+        element: <VerifyOrderPage />,
+      },
+      {
+        path: "/user/dashboard/orders",
+        element: <Orderpage />,
       },
     ],
   },

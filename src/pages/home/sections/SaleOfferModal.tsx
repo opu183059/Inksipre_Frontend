@@ -19,11 +19,12 @@ const SaleOfferModal: React.FC = () => {
   return (
     <Modal
       title={false}
-      visible={isModalVisible}
+      open={isModalVisible}
       centered
       onOk={handleOkandClose}
       onCancel={handleOkandClose}
       footer={null}
+      className="saleModal"
     >
       <div>
         <img src="../../../../saleBanner.jpg" alt="50% sale at inkspire" />
