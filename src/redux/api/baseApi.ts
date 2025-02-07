@@ -14,10 +14,9 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-// http://localhost:5000/api/products
-
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQuery,
+  tagTypes: ["allOrders"],
   endpoints: () => ({}),
 });

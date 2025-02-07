@@ -108,7 +108,7 @@
   }
 
   /* ant design design changes */
-  .ant-modal-content{
+  .saleModal .ant-modal-content{
     padding: 0 !important;
   }
   .ant-modal-close{

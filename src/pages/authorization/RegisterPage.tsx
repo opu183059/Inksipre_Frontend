@@ -22,7 +22,6 @@ const RegisterPage = () => {
         navigate("/login");
       } else if ("status" in res.error! && res?.error?.status === 409) {
         message.error("This mail is already registered");
-        // message.error(res?.error?.data?.message || "Registration failed!");
       } else {
         message.error("Something went wrong, try again");
       }
