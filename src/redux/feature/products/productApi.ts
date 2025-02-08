@@ -7,6 +7,7 @@ const productApi = baseApi.injectEndpoints({
         url: `/products?search=${args.search}&limit=${args.limit}`,
         method: "GET",
       }),
+      providesTags: ["allProducts"],
     }),
     getSpecificProducts: builder.query({
       query: (productId) => ({
@@ -14,8 +15,19 @@ const productApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    addProduct: builder.mutation({
+      query: (data) => ({
+        url: "/products",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["allProducts"],
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery, useGetSpecificProductsQuery } =
-  productApi;
+export const {
+  useGetAllProductsQuery,
+  useGetSpecificProductsQuery,
+  useAddProductMutation,
+} = productApi;

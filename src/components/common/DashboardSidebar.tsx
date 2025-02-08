@@ -37,6 +37,10 @@ const DashboardSidebar = () => {
           key: "users",
           label: <Link to={"/admin/dashboard/user-details"}>User</Link>,
         },
+        {
+          key: "products",
+          label: <Link to={"/admin/dashboard/products"}>Products</Link>,
+        },
       ];
       break;
     case userRole.USER:

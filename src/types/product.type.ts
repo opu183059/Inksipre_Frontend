@@ -1,4 +1,18 @@
+export enum ProductCategory {
+  Writing = "Writing",
+  OfficeSupplies = "Office Supplies",
+  ArtSupplies = "Art Supplies",
+  Educational = "Educational",
+  Technology = "Technology",
+}
+
+type author = {
+  name?: string;
+  email: string;
+};
+
 export type productType = {
+  author?: author;
   _id: string;
   name: string;
   brand: string;

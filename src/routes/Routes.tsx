@@ -16,6 +16,7 @@ import Orderpage from "../pages/dashboard/user/order/Orderpage";
 import AllOrders from "../pages/dashboard/admin/order/AllOrders";
 import ProfileInformation from "../pages/dashboard/admin/profile/ProfileInformation";
 import AllUsersPage from "../pages/dashboard/admin/user/AllUsersPage";
+import ProductsManagement from "../pages/dashboard/admin/products/ProductsManagement";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/dashboard/user-details",
         element: <AllUsersPage />,
+      },
+      {
+        path: "/admin/dashboard/products",
+        element: <ProductsManagement />,
       },
     ],
   },
