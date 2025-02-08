@@ -27,17 +27,15 @@ const DashboardSidebar = () => {
       sidebarItems = [
         {
           key: "Order",
-          label: "Order",
-          children: [
-            {
-              key: "orders",
-              label: <Link to={"/admin/dashboard/all-orders"}>All Orders</Link>,
-            },
-            // {
-            //   key: "update",
-            //   label: "Update Orders",
-            // },
-          ],
+          label: <Link to={"/admin/dashboard/all-orders"}>All Orders</Link>,
+        },
+        {
+          key: "profile",
+          label: <Link to={"/admin/dashboard/profile"}>Profile</Link>,
+        },
+        {
+          key: "users",
+          label: <Link to={"/admin/dashboard/user-details"}>User</Link>,
         },
       ];
       break;
@@ -53,17 +51,7 @@ const DashboardSidebar = () => {
         },
         {
           key: "profile",
-          label: "Profile",
-          children: [
-            {
-              key: "information",
-              label: "Information",
-            },
-            {
-              key: "settings",
-              label: "Settings",
-            },
-          ],
+          label: <Link to={"/user/dashboard/profile"}>Profile</Link>,
         },
       ];
       break;

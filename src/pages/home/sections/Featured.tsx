@@ -1,20 +1,31 @@
 import FeaturedCard from "../../../components/cards/FeaturedCard";
-
-// https://e0.pxfuel.com/wallpapers/214/113/desktop-wallpaper-school-supplies-abstract-stationary-office-office-stationery.jpg
+import Loader from "../../../components/common/Loader";
+import { useGetAllProductsQuery } from "../../../redux/feature/products/productApi";
+import { productType } from "../../../types/product.type";
 
 const Featured = () => {
-  const feature = [1, 2, 3, 4];
+  const { data, isLoading } = useGetAllProductsQuery({
+    search: "",
+    limit: 4,
+  });
+  const products = data?.data || [];
   return (
-    <div className="pb-10">
-      <p className="text-center text-2xl font-playwrite font-bold mb-6">
-        New Arrivals
-      </p>
-      <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
-        {feature.map((item) => (
-          <FeaturedCard key={item} />
-        ))}
-      </div>
-    </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="pb-10">
+          <p className="text-center text-2xl font-playwrite font-bold mb-6">
+            New Arrivals
+          </p>
+          <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
+            {products.map((product: productType) => (
+              <FeaturedCard key={product._id} productData={product} />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

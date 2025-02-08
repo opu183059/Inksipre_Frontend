@@ -9,7 +9,40 @@ const userApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    getSingleUser: builder.query({
+      query: (userId) => ({
+        url: `/user/${userId}`,
+        method: "GET",
+      }),
+    }),
+    getAllUser: builder.query({
+      query: () => ({
+        url: "/user",
+        method: "GET",
+      }),
+      providesTags: ["allUsers"],
+    }),
+    toggleBlockStatus: builder.mutation({
+      query: (userId) => ({
+        url: `/user/${userId}/toggle-block`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["allUsers"],
+    }),
+    toggleDeleteStatus: builder.mutation({
+      query: (userId) => ({
+        url: `/user/${userId}/toggle-delete`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["allUsers"],
+    }),
   }),
 });
 
-export const { useUserRegistrationMutation } = userApi;
+export const {
+  useUserRegistrationMutation,
+  useGetSingleUserQuery,
+  useGetAllUserQuery,
+  useToggleBlockStatusMutation,
+  useToggleDeleteStatusMutation,
+} = userApi;
