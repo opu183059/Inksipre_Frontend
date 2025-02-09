@@ -27,8 +27,10 @@ const MainNavbar = () => {
       <Menu.Item key="dashboard">
         <Link to={`${user?.userRole}/dashboard`}>Dashboard</Link>
       </Menu.Item>
-      <Menu.Item key="profile">Profile</Menu.Item>
-      <Menu.Item key="settings">Settings</Menu.Item>
+      <Menu.Item key="profile">
+        <Link to={`${user?.userRole}/dashboard/profile`}>Profile</Link>
+      </Menu.Item>
+
       <Menu.Divider />
       <Menu.Item key="logout" className="text-red-500" onClick={handleLogout}>
         Logout
@@ -72,18 +74,20 @@ const MainNavbar = () => {
         <div className="flex gap-4 items-center">
           {user ? (
             <div className="flex items-baseline gap-4">
-              <Link to={`${user?.userRole}/dashboard/cart`}>
-                <Badge
-                  size="small"
-                  count={cartItem.reduce(
-                    (total, item) => total + item.quantity,
-                    0
-                  )}
-                  overflowCount={20}
-                >
-                  <FiShoppingCart size={22} />
-                </Badge>
-              </Link>
+              {user.userRole == "user" && (
+                <Link to={`${user?.userRole}/dashboard/cart`}>
+                  <Badge
+                    size="small"
+                    count={cartItem.reduce(
+                      (total, item) => total + item.quantity,
+                      0
+                    )}
+                    overflowCount={20}
+                  >
+                    <FiShoppingCart size={22} />
+                  </Badge>
+                </Link>
+              )}
               <Dropdown
                 overlay={menu}
                 trigger={["hover"]}

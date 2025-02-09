@@ -1,4 +1,4 @@
-import { Switch, Table } from "antd";
+import { message, Switch, Table } from "antd";
 import Loader from "../../../../components/common/Loader";
 import {
   useGetAllUserQuery,
@@ -28,18 +28,24 @@ const AllUsersPage = () => {
   const AllUsers = data?.data;
 
   // Handle Block Toggle
-  const handleBlockToggle = async (userId: string) => {
+  const handleBlockToggle = async (userId: string, isBlocked: boolean) => {
     try {
-      await toggleBlockStatus(userId); // Toggle block status
+      const res = await toggleBlockStatus(userId);
+      if (res.data.success) {
+        message.warning(`User is ${isBlocked ? "Unblocked" : "Blocked"}`);
+      }
     } catch (error) {
       console.error("Error updating block status", error);
     }
   };
 
   // Handle Delete Toggle
-  const handleDeleteToggle = async (userId: string) => {
+  const handleDeleteToggle = async (userId: string, isDeleted: boolean) => {
     try {
-      await toggleDeleteStatus(userId); // Toggle delete status
+      const res = await toggleDeleteStatus(userId);
+      if (res.data.success) {
+        message.warning(`User is ${isDeleted ? "Activated" : "Deleted"}`);
+      }
     } catch (error) {
       console.error("Error updating delete status", error);
     }
@@ -79,23 +85,23 @@ const AllUsersPage = () => {
       render: (_text, record) => (
         <Switch
           checked={record?.isBlocked}
-          onChange={() => handleBlockToggle(record?._id)}
+          onChange={() => handleBlockToggle(record?._id, record?.isBlocked)}
           style={{
-            backgroundColor: record?.isBlocked ? "#EF6F70" : "#4DEBC6",
+            backgroundColor: record?.isBlocked ? "#EF6F70" : "",
           }}
         />
       ),
     },
     {
-      title: "Deactive",
+      title: "Delete",
       dataIndex: "isDeleted",
       key: "isDeleted",
       render: (_text, record) => (
         <Switch
           checked={record?.isDeleted}
-          onChange={() => handleDeleteToggle(record?._id)}
+          onChange={() => handleDeleteToggle(record?._id, record?.isDeleted)}
           style={{
-            backgroundColor: record?.isDeleted ? "#EF6F70" : "#4DEBC6",
+            backgroundColor: record?.isDeleted ? "#EF6F70" : "",
           }}
         />
       ),

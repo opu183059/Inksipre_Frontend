@@ -9,4 +9,5 @@ export type productCardProps = {
   inStock: boolean;
   createdAt: string;
   updatedAt: string;
+  imageUrl?: string;
 };

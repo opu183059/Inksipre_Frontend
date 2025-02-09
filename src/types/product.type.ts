@@ -23,5 +23,6 @@ export type productType = {
   inStock: boolean;
   createdAt: string;
   updatedAt: string;
-  __v: number;
+  imageUrl?: string;
+  __v?: number;
 };

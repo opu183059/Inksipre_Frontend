@@ -1,14 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { Button, InputNumber, message } from "antd";
+import { Button, Image, InputNumber, message } from "antd";
 import { useGetSpecificProductsQuery } from "../../redux/feature/products/productApi";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { addToCart } from "../../redux/feature/cart/cartSlice";
 import Loader from "../../components/common/Loader";
+import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
 
 const SingleProduct = () => {
   const params = useParams();
   const dispatch = useAppDispatch();
+
+  const user = useAppSelector(selectCurrentUser);
   const { data, isLoading } = useGetSpecificProductsQuery(params?.productId);
 
   const productData = data?.data;
@@ -17,9 +20,6 @@ const SingleProduct = () => {
 
   const handleIncrease = () => setQuantity((prev) => prev + 1);
   const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-
-  const imageUrl =
-    "https://th.bing.com/th/id/OIP.lU9p084SQG01a8c-ID8goQHaHa?rs=1&pid=ImgDetMain";
 
   const handleAddToCart = () => {
     const product = {
@@ -76,40 +76,44 @@ const SingleProduct = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center mt-4">
-                    <Button
-                      onClick={handleDecrease}
-                      className="!bg-gray-100  !text-black"
-                    >
-                      -
-                    </Button>
+                  {user?.userRole === "user" && (
+                    <>
+                      <div className="flex items-center mt-4">
+                        <Button
+                          onClick={handleDecrease}
+                          className="!bg-gray-100  !text-black"
+                        >
+                          -
+                        </Button>
 
-                    <InputNumber
-                      min={1}
-                      value={quantity}
-                      onChange={(value) => setQuantity(value || 1)}
-                      className="w-16 text-center"
-                    />
+                        <InputNumber
+                          min={1}
+                          value={quantity}
+                          onChange={(value) => setQuantity(value || 1)}
+                          className="w-16 text-center"
+                        />
 
-                    <Button
-                      onClick={handleIncrease}
-                      className="!bg-gray-100  !text-black"
-                    >
-                      +
-                    </Button>
-                  </div>
-
-                  <Button
-                    type="primary"
-                    className="w-36 btn mt-2"
-                    onClick={handleAddToCart}
-                  >
-                    Add to Cart
-                  </Button>
+                        <Button
+                          onClick={handleIncrease}
+                          className="!bg-gray-100  !text-black"
+                        >
+                          +
+                        </Button>
+                      </div>
+                      <Button
+                        type="primary"
+                        className="w-36 btn mt-2"
+                        onClick={handleAddToCart}
+                      >
+                        Add to Cart
+                      </Button>
+                    </>
+                  )}
                 </div>
                 <div className="col-span-full md:col-span-4">
-                  <img
-                    src={imageUrl}
+                  <Image
+                    src={productData?.imageUrl}
+                    fallback={"https://demofree.sirv.com/nope-not-here.jpg"}
                     alt={productData.name}
                     className="rounded-lg shadow-md"
                   />

@@ -1,15 +1,13 @@
 import { Badge } from "antd";
 import { productCardProps } from "../../types/productCardProps.type";
 import { Link } from "react-router-dom";
+import { findNewArrival } from "../../utils/findNewArrival";
 
-const ProductCard = ({
-  isNew,
-  productData,
-}: {
-  isNew: boolean;
-  productData: productCardProps;
-}) => {
-  const { _id, name, price, category } = productData;
+const ProductCard = ({ productData }: { productData: productCardProps }) => {
+  const { _id, name, price, category, updatedAt, imageUrl } = productData;
+
+  const isNew = findNewArrival(updatedAt);
+
   return (
     <>
       {isNew ? (
@@ -17,7 +15,7 @@ const ProductCard = ({
           <Link to={`/products/${_id}`}>
             <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer">
               <img
-                src="https://th.bing.com/th/id/OIP.nO2pqUYPCsLZ4TJRJ8N3rgAAAA?rs=1&pid=ImgDetMain"
+                src={imageUrl}
                 alt=""
                 className="w-full md:h-40 lg:h-28 object-cover rounded-b-md"
               />
@@ -42,7 +40,7 @@ const ProductCard = ({
         <Link to={`/products/${_id}`}>
           <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer">
             <img
-              src="https://th.bing.com/th/id/OIP.nO2pqUYPCsLZ4TJRJ8N3rgAAAA?rs=1&pid=ImgDetMain"
+              src={imageUrl}
               alt=""
               className="w-full md:h-40 lg:h-28 object-cover rounded-b-md"
             />
