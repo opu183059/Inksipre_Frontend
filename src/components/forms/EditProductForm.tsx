@@ -8,7 +8,15 @@ import {
 } from "../../redux/feature/products/productApi";
 import Loader from "../common/Loader";
 
-const EditProductForm = ({ productId }: { productId: string }) => {
+type EditProductFormProps = {
+  productId: string;
+  setIsViewProductModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const EditProductForm = ({
+  productId,
+  setIsViewProductModalOpen,
+}: EditProductFormProps) => {
   const [edit, setEdit] = useState(true);
   const [form] = Form.useForm();
 
@@ -41,6 +49,7 @@ const EditProductForm = ({ productId }: { productId: string }) => {
     } catch (err) {
       console.log(err);
     }
+    setIsViewProductModalOpen(false);
   };
 
   return (

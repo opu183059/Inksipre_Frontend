@@ -1,15 +1,13 @@
 import { Badge } from "antd";
 import { productCardProps } from "../../types/productCardProps.type";
 import { Link } from "react-router-dom";
+import { findNewArrival } from "../../utils/findNewArrival";
 
-const ProductCard = ({
-  isNew,
-  productData,
-}: {
-  isNew: boolean;
-  productData: productCardProps;
-}) => {
-  const { _id, name, price, category } = productData;
+const ProductCard = ({ productData }: { productData: productCardProps }) => {
+  const { _id, name, price, category, updatedAt } = productData;
+
+  const isNew = findNewArrival(updatedAt);
+
   return (
     <>
       {isNew ? (

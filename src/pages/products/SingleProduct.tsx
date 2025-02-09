@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { Button, InputNumber, message } from "antd";
+import { Button, Image, InputNumber, message } from "antd";
 import { useGetSpecificProductsQuery } from "../../redux/feature/products/productApi";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { addToCart } from "../../redux/feature/cart/cartSlice";
@@ -20,9 +20,6 @@ const SingleProduct = () => {
 
   const handleIncrease = () => setQuantity((prev) => prev + 1);
   const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-
-  const imageUrl =
-    "https://th.bing.com/th/id/OIP.lU9p084SQG01a8c-ID8goQHaHa?rs=1&pid=ImgDetMain";
 
   const handleAddToCart = () => {
     const product = {
@@ -114,8 +111,9 @@ const SingleProduct = () => {
                   )}
                 </div>
                 <div className="col-span-full md:col-span-4">
-                  <img
-                    src={imageUrl}
+                  <Image
+                    src={productData?.imageUrl}
+                    fallback={"https://demofree.sirv.com/nope-not-here.jpg"}
                     alt={productData.name}
                     className="rounded-lg shadow-md"
                   />

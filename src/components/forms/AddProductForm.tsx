@@ -1,5 +1,6 @@
-import { Form, Input, message, Select, Switch, Upload } from "antd";
+import { Button, Form, Input, message, Select, Switch, Upload } from "antd";
 import { ProductCategory, productType } from "../../types/product.type";
+import { MdOutlineFileUpload } from "react-icons/md";
 
 const { TextArea } = Input;
 
@@ -24,11 +25,12 @@ const AddProductForm = ({
         }
       );
       const data = await response.json();
+
       if (data.success) {
         form.setFieldsValue({ imageUrl: data.data.url });
         console.log("Image uploaded successfully!");
       } else {
-        console.log("Failed to upload image");
+        console.error("Failed to upload image");
       }
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -100,17 +102,6 @@ const AddProductForm = ({
       </div>
 
       <Form.Item
-        label="Description"
-        name="description"
-        rules={[
-          { required: true, message: "Please enter product description" },
-        ]}
-      >
-        <TextArea rows={4} placeholder="Enter product description" />
-      </Form.Item>
-
-      {/* Image Upload */}
-      <Form.Item
         label="Product Image"
         name="imageUrl"
         rules={[{ required: true, message: "Please upload an image" }]}
@@ -120,12 +111,21 @@ const AddProductForm = ({
             handleImageUpload(file);
             return false;
           }}
-          showUploadList={false}
+          listType="picture"
+          maxCount={1}
         >
-          <button type="button" className="ant-btn ant-btn-primary">
-            Upload Image
-          </button>
+          <Button icon={<MdOutlineFileUpload />}>Upload</Button>
         </Upload>
+      </Form.Item>
+
+      <Form.Item
+        label="Description"
+        name="description"
+        rules={[
+          { required: true, message: "Please enter product description" },
+        ]}
+      >
+        <TextArea rows={4} placeholder="Enter product description" />
       </Form.Item>
     </Form>
   );

@@ -9,10 +9,10 @@ export const footerMenu = [
   },
   {
     title: "Privacy Policy",
-    link: "/blog",
+    link: "/about",
   },
   {
     title: "Return Policy",
-    link: "/blog",
+    link: "/about",
   },
 ];

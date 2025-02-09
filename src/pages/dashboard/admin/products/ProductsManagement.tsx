@@ -57,7 +57,8 @@ const ProductsManagement = () => {
       ...productData,
       price: Number(productData.price),
       quantity: Number(productData.quantity),
-      imageUrl: productData.imageUrl,
+      imageUrl:
+        productData?.imageUrl || "https://demofree.sirv.com/nope-not-here.jpg",
     };
     try {
       const res = await addProduct(formattedProductData);
@@ -231,7 +232,10 @@ const ProductsManagement = () => {
             }}
             className="productDetails"
           >
-            <EditProductForm productId={productID} />
+            <EditProductForm
+              productId={productID}
+              setIsViewProductModalOpen={setIsViewProductModalOpen}
+            />
           </Modal>
 
           <Modal
