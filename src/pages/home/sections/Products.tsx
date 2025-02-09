@@ -24,11 +24,7 @@ const Products = () => {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {products.map((product: productType) => (
-              <ProductCard
-                key={product._id}
-                productData={product}
-                isNew={product.price % 2 == 0}
-              />
+              <ProductCard key={product._id} productData={product} />
             ))}
           </div>
           <div className="mt-10 flex justify-center">
