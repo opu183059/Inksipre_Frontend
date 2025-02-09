@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { findNewArrival } from "../../utils/findNewArrival";
 
 const ProductCard = ({ productData }: { productData: productCardProps }) => {
-  const { _id, name, price, category, updatedAt } = productData;
+  const { _id, name, price, category, updatedAt, imageUrl } = productData;
 
   const isNew = findNewArrival(updatedAt);
 
@@ -15,7 +15,7 @@ const ProductCard = ({ productData }: { productData: productCardProps }) => {
           <Link to={`/products/${_id}`}>
             <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer">
               <img
-                src="https://th.bing.com/th/id/OIP.nO2pqUYPCsLZ4TJRJ8N3rgAAAA?rs=1&pid=ImgDetMain"
+                src={imageUrl}
                 alt=""
                 className="w-full md:h-40 lg:h-28 object-cover rounded-b-md"
               />
@@ -40,7 +40,7 @@ const ProductCard = ({ productData }: { productData: productCardProps }) => {
         <Link to={`/products/${_id}`}>
           <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer">
             <img
-              src="https://th.bing.com/th/id/OIP.nO2pqUYPCsLZ4TJRJ8N3rgAAAA?rs=1&pid=ImgDetMain"
+              src={imageUrl}
               alt=""
               className="w-full md:h-40 lg:h-28 object-cover rounded-b-md"
             />
