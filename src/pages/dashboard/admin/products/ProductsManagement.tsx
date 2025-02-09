@@ -1,22 +1,33 @@
-import { Form, Button, Modal } from "antd";
+import { Form, Button, Modal, Tag } from "antd";
 import Table, { ColumnsType } from "antd/es/table";
 import Loader from "../../../../components/common/Loader";
 import {
   useAddProductMutation,
+  useDeleteProductMutation,
   useGetAllProductsQuery,
 } from "../../../../redux/feature/products/productApi";
 import { productType } from "../../../../types/product.type";
-import { convertDate } from "../../../../utils/convertDate";
+
 import { useState } from "react";
 import AddProductForm from "../../../../components/forms/AddProductForm";
 import { MdAssignmentAdd } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
 import { message } from "antd";
+import EditProductForm from "../../../../components/forms/EditProductForm";
+import { IoTrashSharp } from "react-icons/io5";
+import { TbExclamationCircleFilled } from "react-icons/tb";
 
 const ProductsManagement = () => {
   const { data, isLoading } = useGetAllProductsQuery({ search: "", limit: "" });
+
   const [addProduct] = useAddProductMutation();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isViewProductModalOpen, setIsViewProductModalOpen] = useState(false);
+  const [productID, setProductID] = useState("");
+
   const [form] = Form.useForm();
   const products = data?.data;
 
@@ -36,6 +47,8 @@ const ProductsManagement = () => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    setIsViewProductModalOpen(false);
+    setIsDeleteModalOpen(false);
   };
 
   const onFinish = async (productData: productType) => {
@@ -44,12 +57,19 @@ const ProductsManagement = () => {
       ...productData,
       price: Number(productData.price),
       quantity: Number(productData.quantity),
+      imageUrl: productData.imageUrl,
     };
     try {
       const res = await addProduct(formattedProductData);
-      if (res?.data?.success) {
+      toster();
+      if (res?.data) {
+        if (res?.data?.success) {
+          message.success(res?.data?.message);
+        }
+      } else {
         toster();
-        message.success(res?.data?.message);
+        // @ts-expect-error not necessary because there will be a data
+        message.error(res?.error?.data?.message);
       }
       setIsModalOpen(false);
       form.resetFields();
@@ -58,6 +78,21 @@ const ProductsManagement = () => {
       toster();
       message.error("Failed to add product, please try again!");
     }
+  };
+
+  const handleDelete = async () => {
+    const toster = message.loading("Deleting...", 0);
+    try {
+      const res = await deleteProduct(productID);
+      toster();
+      if (res.data.success) {
+        message.success(res.data.message);
+      }
+    } catch (error) {
+      toster();
+      console.log(error);
+    }
+    setIsDeleteModalOpen(false);
   };
 
   const columns: ColumnsType<productType> = [
@@ -92,16 +127,50 @@ const ProductsManagement = () => {
       key: "quantity",
     },
     {
-      title: "Created At",
-      dataIndex: "createdAt",
-      key: "createdAt",
-      render: (date) => convertDate(date),
+      title: "Status",
+      dataIndex: "inStock",
+      key: "inStock",
+      render: (inStock) =>
+        inStock ? (
+          <Tag color="green">Available</Tag>
+        ) : (
+          <Tag color="red">Not Available</Tag>
+        ),
     },
     {
-      title: "Updated At",
-      dataIndex: "updatedAt",
-      key: "updatedAt",
-      render: (date) => convertDate(date),
+      title: "View/Edit",
+      align: "center",
+      dataIndex: "_id",
+      key: "_id",
+      render: (productId) => (
+        <Button
+          icon={<FaEye size={13} />}
+          onClick={() => {
+            setProductID(productId);
+            setIsViewProductModalOpen(true);
+          }}
+          className="cursor-pointer"
+          type="default"
+        >
+          View
+        </Button>
+      ),
+    },
+    {
+      title: "Delete",
+      dataIndex: "_id",
+      render: (productId: string) => (
+        <Button
+          icon={<IoTrashSharp />}
+          className="text-red-500"
+          onClick={() => {
+            setIsDeleteModalOpen(true);
+            setProductID(productId);
+          }}
+        >
+          Delete
+        </Button>
+      ),
     },
   ];
 
@@ -111,7 +180,8 @@ const ProductsManagement = () => {
         <Loader />
       ) : (
         <div>
-          <div className="flex justify-end mb-5">
+          <div className="flex justify-between mb-5">
+            <h4>Total Products: {products?.length}</h4>
             <Button
               type="primary"
               onClick={showModal}
@@ -144,6 +214,41 @@ const ProductsManagement = () => {
             }}
           >
             <AddProductForm form={form} onFinish={onFinish} />
+          </Modal>
+          <Modal
+            centered
+            title="Product Details"
+            open={isViewProductModalOpen}
+            onCancel={handleCancel}
+            footer={null}
+            width={{
+              xs: "90%",
+              sm: "80%",
+              md: "70%",
+              lg: "60%",
+              xl: "50%",
+              xxl: "40%",
+            }}
+            className="productDetails"
+          >
+            <EditProductForm productId={productID} />
+          </Modal>
+
+          <Modal
+            title={
+              <TbExclamationCircleFilled
+                size={20}
+                className="text-orange-500"
+              />
+            }
+            open={isDeleteModalOpen}
+            okText="Yes"
+            okType="danger"
+            cancelText="No"
+            onOk={handleDelete}
+            onCancel={handleCancel}
+          >
+            <p>Are you sure delete this task?</p>
           </Modal>
         </div>
       )}

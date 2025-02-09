@@ -1,4 +1,4 @@
-import { Form, Input, Select, Switch } from "antd";
+import { Form, Input, message, Select, Switch, Upload } from "antd";
 import { ProductCategory, productType } from "../../types/product.type";
 
 const { TextArea } = Input;
@@ -11,9 +11,35 @@ const AddProductForm = ({
   form: any;
   onFinish: (values: productType) => void;
 }) => {
+  const handleImageUpload = async (file: File) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch(
+        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+      if (data.success) {
+        form.setFieldsValue({ imageUrl: data.data.url });
+        console.log("Image uploaded successfully!");
+      } else {
+        console.log("Failed to upload image");
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      message.error("Image upload error!");
+    }
+  };
+
   return (
     <Form
-      form={form} // Use the passed form instance
+      form={form}
       name="add-product"
       onFinish={onFinish}
       layout="vertical"
@@ -21,7 +47,7 @@ const AddProductForm = ({
         inStock: true,
       }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Form.Item
           label="Product Name"
           name="name"
@@ -81,6 +107,25 @@ const AddProductForm = ({
         ]}
       >
         <TextArea rows={4} placeholder="Enter product description" />
+      </Form.Item>
+
+      {/* Image Upload */}
+      <Form.Item
+        label="Product Image"
+        name="imageUrl"
+        rules={[{ required: true, message: "Please upload an image" }]}
+      >
+        <Upload
+          beforeUpload={(file) => {
+            handleImageUpload(file);
+            return false;
+          }}
+          showUploadList={false}
+        >
+          <button type="button" className="ant-btn ant-btn-primary">
+            Upload Image
+          </button>
+        </Upload>
       </Form.Item>
     </Form>
   );

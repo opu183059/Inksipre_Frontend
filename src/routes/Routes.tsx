@@ -65,15 +65,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin/dashboard",
-        element: <Navigate to="/admin/dashboard/all-orders" replace />,
-      },
-      {
-        path: "/admin/dashboard/all-orders",
-        element: <AllOrders />,
+        element: <Navigate to="/admin/dashboard/profile" replace />,
       },
       {
         path: "/admin/dashboard/profile",
         element: <ProfileInformation />,
+      },
+      {
+        path: "/admin/dashboard/all-orders",
+        element: <AllOrders />,
       },
       {
         path: "/admin/dashboard/user-details",
@@ -96,15 +96,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/user/dashboard",
-        element: <Navigate to="/user/dashboard/cart" replace />,
-      },
-      {
-        path: "/user/dashboard/cart",
-        element: <UserCartPage />,
+        element: <Navigate to="/user/dashboard/profile" replace />,
       },
       {
         path: "/user/dashboard/profile",
         element: <ProfileInformation />,
+      },
+      {
+        path: "/user/dashboard/cart",
+        element: <UserCartPage />,
       },
       {
         path: "/user/dashboard/verify-order",

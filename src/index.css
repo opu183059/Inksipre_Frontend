@@ -3,151 +3,169 @@
 @tailwind utilities;
 
 :root {
-  --btn-primary-color: #9316c5; 
-  --btn-secondary-color: #ca42ff; 
+  --btn-primary-color: #9316c5;
+  --btn-secondary-color: #ca42ff;
 }
 .dark {
-  --btn-primary-color: #9316c5; 
-  --btn-secondary-color: #ca42ff; 
+  --btn-primary-color: #9316c5;
+  --btn-secondary-color: #ca42ff;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: poppins;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
 }
 
-.btn{
+.btn {
   background-color: var(--btn-secondary-color) !important;
 }
-.btn:hover{
+.btn:hover {
   background-color: var(--btn-primary-color) !important;
 }
 
-.loading{
+.loading {
   background-color: var(--btn-secondary-color);
 }
 
 /* button animation  */
 .btn10 {
-    padding: 5px 20px;
-    border: 1px solid var(--btn-primary-color);
-    border-radius: 5px;
-    text-transform: uppercase;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    letter-spacing: 2px;
-    color: #fff;
-    cursor: hand;
-    text-align: center;
-    position: relative;
-    overflow: hidden !important;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background: transparent !important;
-    z-index: 10;
-  }
-  
-  .btn10:hover {
-    border: 1px solid var(--btn-primary-color);
-  }
-  .btn10::before {
-    content: "";
-    width: 0%;
-    height: 100%;
-    display: block;
-    background: var(--btn-primary-color);
-    position: absolute;
-    -ms-transform: skewX(-20deg);
-    -webkit-transform: skewX(-20deg);
-    transform: skewX(-20deg);
-    left: -10%;
-    opacity: 1;
-    top: 0;
-    z-index: -12;
-    -moz-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
-    -o-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
-    -webkit-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
-    transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
-    box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.6);
-  }
-  
-  .btn10::after {
-    content: "";
-    width: 0%;
-    height: 100%;
-    display: block;
-    background: var(--btn-secondary-color);
-    position: absolute;
-    -ms-transform: skewX(-20deg);
-    -webkit-transform: skewX(-20deg);
-    transform: skewX(-20deg);
-    left: -10%;
-    opacity: 0;
-    top: 0;
-    z-index: -15;
-    -webkit-transition: all 0.94s cubic-bezier(0.2, 0.95, 0.57, 0.99);
-    -moz-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
-    -o-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
-    transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
-    box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.6);
-  }
-  .btn10:hover::before,
-  .btn1O:hover::before {
-    opacity: 1;
-    width: 116%;
-  }
-  .btn10:hover::after,
-  .btn1O:hover::after {
-    opacity: 1;
-    width: 120%;
-  }
+  padding: 5px 20px;
+  border: 1px solid var(--btn-primary-color);
+  border-radius: 5px;
+  text-transform: uppercase;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  letter-spacing: 2px;
+  color: #fff;
+  cursor: hand;
+  text-align: center;
+  position: relative;
+  overflow: hidden !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: transparent !important;
+  z-index: 10;
+}
 
-  /* ant design design changes */
-  .saleModal .ant-modal-content{
-    padding: 0 !important;
-  }
-  .ant-modal-close{
-    color: white !important;
-  }
+.btn10:hover {
+  border: 1px solid var(--btn-primary-color);
+}
+.btn10::before {
+  content: "";
+  width: 0%;
+  height: 100%;
+  display: block;
+  background: var(--btn-primary-color);
+  position: absolute;
+  -ms-transform: skewX(-20deg);
+  -webkit-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  left: -10%;
+  opacity: 1;
+  top: 0;
+  z-index: -12;
+  -moz-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.6);
+}
 
-  .custom-shadow{
-    box-shadow: rgb(0, 0, 0) 0px 3px 3px 0px , rgb(219, 219, 219) 0px -3px 3px 1px ;
-  }
+.btn10::after {
+  content: "";
+  width: 0%;
+  height: 100%;
+  display: block;
+  background: var(--btn-secondary-color);
+  position: absolute;
+  -ms-transform: skewX(-20deg);
+  -webkit-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  left: -10%;
+  opacity: 0;
+  top: 0;
+  z-index: -15;
+  -webkit-transition: all 0.94s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  -moz-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  -o-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.6);
+}
+.btn10:hover::before,
+.btn1O:hover::before {
+  opacity: 1;
+  width: 116%;
+}
+.btn10:hover::after,
+.btn1O:hover::after {
+  opacity: 1;
+  width: 120%;
+}
 
+/* ant design design changes */
+.saleModal .ant-modal-content {
+  padding: 0 !important;
+}
+.saleModal .ant-modal-close {
+  color: white !important;
+}
+.custom-shadow {
+  box-shadow: rgb(0, 0, 0) 0px 3px 3px 0px, rgb(219, 219, 219) 0px -3px 3px 1px;
+}
 
-  .wave-container {
-    display: flex;
-    gap: 0.25rem;
-    align-items: center;
-    height: 2rem;
+.productDetails .ant-input,
+.productDetails .ant-select-selection-item {
+  color: black;
+}
+
+/* loader  */
+.wave-container {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  height: 2rem;
 }
 
 .wave-bar {
-    width: 0.25rem;
-    height: 100%;
-    animation: wave 1.2s ease-in-out infinite;
+  width: 0.25rem;
+  height: 100%;
+  animation: wave 1.2s ease-in-out infinite;
 }
 
-.wave-bar:nth-child(2) { animation-delay: 0.1s; }
-.wave-bar:nth-child(3) { animation-delay: 0.2s; }
-.wave-bar:nth-child(4) { animation-delay: 0.3s; }
-.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.wave-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
 
 @keyframes wave {
-    0%, 40%, 100% { transform: scaleY(0.4); }
-    20% { transform: scaleY(1); }
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
 }
 
 /* Floating animation for cards */
 .spinner-card {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .spinner-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }

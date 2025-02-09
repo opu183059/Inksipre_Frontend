@@ -26,25 +26,33 @@ const DashboardSidebar = () => {
     case userRole.ADMIN:
       sidebarItems = [
         {
-          key: "Order",
-          label: <Link to={"/admin/dashboard/all-orders"}>All Orders</Link>,
-        },
-        {
           key: "profile",
           label: <Link to={"/admin/dashboard/profile"}>Profile</Link>,
+        },
+        {
+          key: "products",
+          label: <Link to={"/admin/dashboard/products"}>Products</Link>,
+        },
+        {
+          key: "Order",
+          label: <Link to={"/admin/dashboard/all-orders"}>All Orders</Link>,
         },
         {
           key: "users",
           label: <Link to={"/admin/dashboard/user-details"}>User</Link>,
         },
         {
-          key: "products",
-          label: <Link to={"/admin/dashboard/products"}>Products</Link>,
+          key: "homepage",
+          label: <Link to={"/"}>Homepage</Link>,
         },
       ];
       break;
     case userRole.USER:
       sidebarItems = [
+        {
+          key: "profile",
+          label: <Link to={"/user/dashboard/profile"}>Profile</Link>,
+        },
         {
           key: "cart",
           label: <Link to={"/user/dashboard/cart"}>Cart</Link>,
@@ -54,8 +62,8 @@ const DashboardSidebar = () => {
           label: <Link to={"/user/dashboard/orders"}>Orders</Link>,
         },
         {
-          key: "profile",
-          label: <Link to={"/user/dashboard/profile"}>Profile</Link>,
+          key: "homepage",
+          label: <Link to={"/"}>Homepage</Link>,
         },
       ];
       break;
@@ -80,17 +88,6 @@ const DashboardSidebar = () => {
         defaultSelectedKeys={["1"]}
         items={sidebarItems}
       />
-      <div className="hidden  mt-10 md:flex gap-3 items-center justify-center">
-        <Link
-          to={"/"}
-          className="bg-gray-50 text-black px-2 py-1 rounded-md hover:bg-blue-500 hover:text-gray-50 duration-300"
-        >
-          Home page
-        </Link>
-        <button className="bg-gray-50 text-black px-2 py-1 rounded-md hover:bg-blue-500 hover:text-gray-50 duration-300">
-          Logout
-        </button>
-      </div>
     </Sider>
   );
 };
