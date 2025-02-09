@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
   const dispatch = useAppDispatch();
 
   // @ts-expect-error role is defined as user/admin
-  if (role !== undefined && role !== user?.role) {
+  if (role !== undefined && role !== user?.userRole) {
     dispatch(logout());
     return <Navigate to="/login" replace={true} />;
   }

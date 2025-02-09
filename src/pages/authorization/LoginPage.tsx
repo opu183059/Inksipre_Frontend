@@ -28,9 +28,8 @@ const LoginPage = () => {
       if (response.success) {
         toster();
         message.success(response.message);
-
-        // navigate(`/${decodedUser?.userRole}/dashboard`, { replace: true });
-        navigate("/", { replace: true });
+        // @ts-expect-error: Unreachable code error
+        navigate(`/${decodedUser?.userRole}/dashboard`, { replace: true });
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
