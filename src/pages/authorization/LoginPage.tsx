@@ -31,6 +31,7 @@ const LoginPage = () => {
         // @ts-expect-error: Unreachable code error
         navigate(`/${decodedUser?.userRole}/dashboard`, { replace: true });
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       toster();
       message.error(err?.data?.message as string);

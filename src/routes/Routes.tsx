@@ -14,6 +14,9 @@ import UserCartPage from "../pages/dashboard/user/cart/UserCartPage";
 import VerifyOrderPage from "../pages/dashboard/user/order/VerifyOrderPage";
 import Orderpage from "../pages/dashboard/user/order/Orderpage";
 import AllOrders from "../pages/dashboard/admin/order/AllOrders";
+import ProfileInformation from "../pages/dashboard/admin/profile/ProfileInformation";
+import AllUsersPage from "../pages/dashboard/admin/user/AllUsersPage";
+import ProductsManagement from "../pages/dashboard/admin/products/ProductsManagement";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +71,18 @@ const router = createBrowserRouter([
         path: "/admin/dashboard/all-orders",
         element: <AllOrders />,
       },
+      {
+        path: "/admin/dashboard/profile",
+        element: <ProfileInformation />,
+      },
+      {
+        path: "/admin/dashboard/user-details",
+        element: <AllUsersPage />,
+      },
+      {
+        path: "/admin/dashboard/products",
+        element: <ProductsManagement />,
+      },
     ],
   },
   {
@@ -86,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "/user/dashboard/cart",
         element: <UserCartPage />,
+      },
+      {
+        path: "/user/dashboard/profile",
+        element: <ProfileInformation />,
       },
       {
         path: "/user/dashboard/verify-order",

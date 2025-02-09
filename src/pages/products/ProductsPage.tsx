@@ -4,13 +4,17 @@ import { Input } from "antd";
 import { useGetAllProductsQuery } from "../../redux/feature/products/productApi";
 import { useState } from "react";
 import Loader from "../../components/common/Loader";
+import { productType } from "../../types/product.type";
 type SearchProps = GetProps<typeof Input.Search>;
 
 const { Search } = Input;
 
 const ProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { data, isLoading } = useGetAllProductsQuery(searchTerm);
+  const { data, isLoading } = useGetAllProductsQuery({
+    search: searchTerm,
+    limit: "",
+  });
   const productData = data?.data || [];
 
   const onSearch: SearchProps["onSearch"] = (value) => {
@@ -35,7 +39,7 @@ const ProductsPage = () => {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-8">
           {productData && productData?.length ? (
-            productData.map((product: any, index: number) => (
+            productData.map((product: productType, index: number) => (
               <ProductCard
                 key={index}
                 productData={product}

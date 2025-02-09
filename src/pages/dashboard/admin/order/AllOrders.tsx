@@ -1,12 +1,14 @@
 import { Button, message, Modal, Select, Table } from "antd";
 import Loader from "../../../../components/common/Loader";
 import {
+  useDeleteOrderMutation,
   useGetAllOrdersQuery,
   useUpdateOrderMutation,
 } from "../../../../redux/feature/order/orderApi";
 import { ColumnsType } from "antd/es/table";
 import { convertDate } from "../../../../utils/convertDate";
 import { useState } from "react";
+import { IoTrashSharp } from "react-icons/io5";
 
 interface OrderItem {
   product: string;
@@ -40,9 +42,10 @@ interface Order {
 
 const AllOrders = () => {
   const { data, isLoading } = useGetAllOrdersQuery(undefined);
-  const [updateOrder, { error }] = useUpdateOrderMutation();
+  const [updateOrder, { error: updateError }] = useUpdateOrderMutation();
+  const [deleteOrder, { error: deleteError }] = useDeleteOrderMutation();
 
-  console.log(error);
+  console.log(updateError, deleteError);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
@@ -68,6 +71,19 @@ const AllOrders = () => {
         toaster();
         message.error("Failed to update order status.");
       }
+    }
+  };
+
+  const handleDeleteOrder = async (orderID: string) => {
+    try {
+      const res = await deleteOrder(orderID);
+      if (res.data.success) {
+        message.success("Order is Deleted");
+      }
+      setIsModalVisible(false);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      message.error("Failed delete order, try again");
     }
   };
 
@@ -127,10 +143,22 @@ const AllOrders = () => {
       ),
     },
     {
-      title: "Date",
+      title: "Order Date",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (record) => convertDate(record),
+    },
+    {
+      title: "Delete",
+      dataIndex: "_id",
+      key: "delete",
+      render: (record: string) => (
+        <IoTrashSharp
+          size={20}
+          className="text-red-500 cursor-pointer"
+          onClick={() => handleDeleteOrder(record)}
+        />
+      ),
     },
   ];
 
