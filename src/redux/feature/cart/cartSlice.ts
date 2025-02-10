@@ -3,6 +3,7 @@ import { RootState } from "../../store";
 
 interface Product {
   product: string;
+  imageUrl: string;
   name: string;
   price: string;
   quantity: number;

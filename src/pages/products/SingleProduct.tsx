@@ -25,6 +25,7 @@ const SingleProduct = () => {
     const product = {
       product: productData?._id,
       name: productData?.name,
+      imageUrl: productData?.imageUrl,
       price: productData?.price,
       quantity,
     };

@@ -17,6 +17,9 @@ import AllOrders from "../pages/dashboard/admin/order/AllOrders";
 import ProfileInformation from "../pages/dashboard/admin/profile/ProfileInformation";
 import AllUsersPage from "../pages/dashboard/admin/user/AllUsersPage";
 import ProductsManagement from "../pages/dashboard/admin/products/ProductsManagement";
+import PrivacyPolicyPage from "../pages/privacy-policy/PrivacyPolicyPage";
+import ReturnPolicyPage from "../pages/return-policy/ReturnPolicyPage";
+import SingleBlogPage from "../pages/blog/SingleBlogPage";
 
 const router = createBrowserRouter([
   {
@@ -45,12 +48,24 @@ const router = createBrowserRouter([
         element: <BlogPage />,
       },
       {
+        path: "/blogs/:blogId",
+        element: <SingleBlogPage />,
+      },
+      {
         path: "/login",
         element: <LoginPage />,
       },
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicyPage />,
+      },
+      {
+        path: "/return-policy",
+        element: <ReturnPolicyPage />,
       },
     ],
   },

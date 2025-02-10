@@ -1,4 +1,4 @@
-import { Form, Button, Modal, Tag } from "antd";
+import { Form, Button, Modal, Tag, Image } from "antd";
 import Table, { ColumnsType } from "antd/es/table";
 import Loader from "../../../../components/common/Loader";
 import {
@@ -101,6 +101,13 @@ const ProductsManagement = () => {
       title: "SL",
       key: "serial",
       render: (_text, _record, index) => index + 1,
+      fixed: "left",
+    },
+    {
+      title: "Image",
+      dataIndex: "imageUrl",
+      key: "imageUrl",
+      render: (image: string) => <Image src={image} width={50} />,
     },
     {
       title: "Name",

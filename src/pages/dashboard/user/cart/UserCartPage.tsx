@@ -11,6 +11,7 @@ import { IoTrashSharp } from "react-icons/io5";
 interface Product {
   key: string;
   product: string;
+  imageUrl: string;
   name: string;
   quantity: number;
   price: number;
@@ -31,8 +32,8 @@ const UserCartPage = () => {
   const columns = [
     {
       title: "Image",
-      dataIndex: "image",
-      key: "image",
+      dataIndex: "imageUrl",
+      key: "imageUrl",
       render: (image: string) => <Image src={image} width={50} />,
     },
     {
