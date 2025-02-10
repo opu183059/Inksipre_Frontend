@@ -7,7 +7,7 @@ const Banner = () => {
     <div className="min-h-screen bg-[url('../../../HomeBanner.jpg')] bg-center md:bg-cover bg-local md:bg-fixed -mt-14">
       <div className="min-h-screen bg-black/40">
         <div className="container">
-          <div className="md:w-1/2 flex flex-col justify-center min-h-screen text-center md:text-left p-4 md:p-0">
+          <div className="md:w-1/2 flex flex-col items-center md:items-start justify-center min-h-screen text-center md:text-left p-4 md:p-0">
             <h1 className="text-4xl md:text-6xl font-playwrite font-bold text-gray-50">
               Inkspire
             </h1>
@@ -18,7 +18,7 @@ const Banner = () => {
             </p>
             <Link to={"/products"}>
               <Button type="primary" className="btn10 mt-4">
-                View All Products{" "}
+                View All Products
                 <AiOutlineProduct size={16} className="ml-2" />
               </Button>
             </Link>

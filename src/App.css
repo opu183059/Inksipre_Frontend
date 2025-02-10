@@ -1,28 +1,27 @@
-.text-primary{
-    @apply text-black dark:text-gray-50 text-sm md:text-base;
+.text-primary {
+  @apply text-black dark:text-gray-50 text-sm md:text-base;
 }
 
-.container{
-    @apply w-11/12 mx-auto;
+.container {
+  @apply w-11/12 mx-auto;
 }
 
-.bg-primary{
-    @apply bg-gray-200 dark:bg-gray-800;
+.logo-hover {
+  @apply hover:text-[var(--btn-primary-color)] dark:hover:text-white transition-all duration-300;
 }
 
-.menu-hover{
-    @apply hover:text-blue-500 uppercase duration-300;
+.menu-hover {
+  @apply hover:text-[var(--btn-primary-color)] dark:hover:text-[var(--btn-secondary-color)] uppercase transition-all duration-300 hover:underline underline-offset-4;
 }
 
-.category-card{
-    @apply hover:shadow-lg  dark:hover:shadow-gray-700 duration-300;
+.category-card {
+  @apply hover:shadow-lg  dark:hover:shadow-gray-700 duration-300;
 }
 
-.footer-menu-hover{
-    @apply hover:text-blue-500 hover:underline duration-300;
+.footer-menu-hover {
+  @apply hover:text-[var()] hover:underline duration-300;
 }
 
-.footer-menu-header{
-    @apply underline underline-offset-4 font-semibold mb-4
+.footer-menu-header {
+  @apply underline underline-offset-4 font-semibold mb-4;
 }
-

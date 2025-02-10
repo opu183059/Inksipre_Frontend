@@ -5,13 +5,16 @@ import Logo from "../../assets/Logo";
 import { useEffect, useState } from "react";
 import { IoSunny } from "react-icons/io5";
 import { IoMoon } from "react-icons/io5";
+import { UserOutlined } from "@ant-design/icons";
 import { FiShoppingCart } from "react-icons/fi";
 import { logout, selectCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectCurrentCart } from "../../redux/feature/cart/cartSlice";
+import MobileMenu from "./MobileMenu";
 
 const MainNavbar = () => {
   const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -57,15 +60,15 @@ const MainNavbar = () => {
   return (
     <nav className="sticky top-0 z-50 shadow-md text-primary bg-primary">
       <div className="container flex justify-between items-center py-4">
-        <div>
+        <Link to={"/"}>
           <Logo />
-        </div>
-        <div className="menu">
+        </Link>
+        <div className="menu hidden md:block">
           {mainMenu.map((item, index) => (
             <Link
               to={item.link}
               key={index}
-              className=" hover:text-blue-500 mx-2 font-poppins uppercase duration-300 font-bold"
+              className="menu-hover mx-2 font-poppins font-bold"
             >
               {item.title}
             </Link>
@@ -73,7 +76,7 @@ const MainNavbar = () => {
         </div>
         <div className="flex gap-4 items-center">
           {user ? (
-            <div className="flex items-baseline gap-4">
+            <div className="flex items-end gap-4">
               {user.userRole == "user" && (
                 <Link to={`${user?.userRole}/dashboard/cart`}>
                   <Badge
@@ -84,7 +87,7 @@ const MainNavbar = () => {
                     )}
                     overflowCount={20}
                   >
-                    <FiShoppingCart size={22} />
+                    <FiShoppingCart size={20} className="dark:text-gray-50" />
                   </Badge>
                 </Link>
               )}
@@ -93,18 +96,20 @@ const MainNavbar = () => {
                 trigger={["hover"]}
                 open={open}
                 onOpenChange={(flag) => setOpen(flag)}
+                className="hidden md:block"
               >
                 <Avatar
-                  src="https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg"
+                  size={{ xs: 30, sm: 36, md: 40 }}
+                  icon={<UserOutlined />}
                   className="cursor-pointer"
                 />
               </Dropdown>
             </div>
           ) : (
-            <Link to={"/login"}>
+            <Link to={"/login"} className="hidden md:block">
               <Button
                 type="primary"
-                className="btn10 !text-black hover:!text-gray-50"
+                className="btn10 !text-black hover:!text-gray-50 dark:!text-gray-50"
               >
                 Login
               </Button>
@@ -116,6 +121,21 @@ const MainNavbar = () => {
           >
             {darkMode ? <IoMoon /> : <IoSunny />}
           </button>
+          <label className="block md:hidden">
+            <div className="w-9 h-10 cursor-pointer flex flex-col items-center justify-center">
+              <input
+                className="hidden peer"
+                type="checkbox"
+                onChange={() => {
+                  setMenuOpen(!menuOpen);
+                }}
+              />
+              <div className="w-[50%] h-[2px] bg-black dark:bg-gray-50 rounded-sm transition-all duration-300 origin-left translate-y-[0.45rem] peer-checked:rotate-[-45deg]"></div>
+              <div className="w-[50%] h-[2px] bg-black dark:bg-gray-50 rounded-md transition-all duration-300 origin-center peer-checked:hidden"></div>
+              <div className="w-[50%] h-[2px] bg-black dark:bg-gray-50 rounded-md transition-all duration-300 origin-left -translate-y-[0.45rem] peer-checked:rotate-[45deg]"></div>
+            </div>
+          </label>
+          {menuOpen && <MobileMenu />}
         </div>
       </div>
     </nav>

@@ -31,7 +31,7 @@ const Products = () => {
             <Link to={"/products"}>
               <Button
                 type="primary"
-                className="btn10 !text-black hover:!text-gray-50"
+                className="btn10 !text-black hover:!text-gray-50 dark:!text-gray-50"
               >
                 View all <AiOutlineProduct size={14} />
               </Button>

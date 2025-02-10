@@ -5,10 +5,13 @@
 :root {
   --btn-primary-color: #9316c5;
   --btn-secondary-color: #ca42ff;
+  --bg-color: #e5e7eb;
 }
+
 .dark {
   --btn-primary-color: #9316c5;
   --btn-secondary-color: #ca42ff;
+  --bg-color: #221129;
 }
 
 * {
@@ -18,9 +21,14 @@
   font-family: poppins;
 }
 
+.bg-primary {
+  background-color: var(--bg-color);
+}
+
 .btn {
   background-color: var(--btn-secondary-color) !important;
 }
+
 .btn:hover {
   background-color: var(--btn-primary-color) !important;
 }
