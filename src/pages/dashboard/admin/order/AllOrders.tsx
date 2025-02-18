@@ -88,11 +88,11 @@ const AllOrders = () => {
   };
 
   const columns: ColumnsType<Order> = [
-    {
-      title: "SL",
-      key: "serial",
-      render: (_text, _record, index) => index + 1,
-    },
+    // {
+    //   title: "SL",
+    //   key: "serial",
+    //   render: (_text, _record, index) => index + 1,
+    // },
     {
       title: "Order ID",
       dataIndex: "transaction",
@@ -171,7 +171,7 @@ const AllOrders = () => {
           <Table
             columns={columns}
             dataSource={orders}
-            pagination={false}
+            pagination={{ pageSize: 10 }}
             rowKey="_id"
             scroll={{ x: "max-content" }}
           />

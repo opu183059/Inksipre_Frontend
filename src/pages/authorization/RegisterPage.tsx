@@ -2,6 +2,8 @@ import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message } from "antd";
 import { useUserRegistrationMutation } from "../../redux/feature/userApi/userApi";
 import { Link, useNavigate } from "react-router-dom";
+import Lottie from "lottie-react";
+import animation from "../../assets/animation_lk7w5h5n.json";
 
 const RegisterPage = () => {
   const [addStudent] = useUserRegistrationMutation();
@@ -32,12 +34,16 @@ const RegisterPage = () => {
     }
   };
   return (
-    <div className="container min-h-screen py-10 flex items-center justify-center">
+    <div className="container min-h-screen py-10 flex gap-5 items-center justify-center">
+      <div className="hidden md:block md:w-1/2">
+        <Lottie animationData={animation} style={{ width: 400, height: 400 }} />
+      </div>
       <Form
         name="login"
         initialValues={{ remember: true }}
         style={{ maxWidth: 360 }}
         onFinish={onFinish}
+        className="md:w-1/2"
       >
         <Form.Item
           hasFeedback
@@ -47,7 +53,11 @@ const RegisterPage = () => {
             { required: true, message: "Please input your User Name!" },
           ]}
         >
-          <Input prefix={<UserOutlined />} placeholder="Username" />
+          <Input
+            prefix={<UserOutlined />}
+            placeholder="Username"
+            size="large"
+          />
         </Form.Item>
         <Form.Item
           hasFeedback
@@ -57,7 +67,7 @@ const RegisterPage = () => {
             { required: true, message: "Please input your Email!" },
           ]}
         >
-          <Input prefix={<MailOutlined />} placeholder="Email" />
+          <Input prefix={<MailOutlined />} placeholder="Email" size="large" />
         </Form.Item>
         <Form.Item
           name="password"
@@ -67,10 +77,11 @@ const RegisterPage = () => {
             prefix={<LockOutlined />}
             type="password"
             placeholder="Password"
+            size="large"
           />
         </Form.Item>
         <Form.Item className="text-primary">
-          <Button block type="primary" htmlType="submit">
+          <Button block type="primary" htmlType="submit" size="large">
             Register
           </Button>
           or <Link to={"/login"}>Login now</Link>
