@@ -12,6 +12,7 @@ const SingleProduct = () => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector(selectCurrentUser);
+
   const { data, isLoading } = useGetSpecificProductsQuery(params?.productId);
 
   const productData = data?.data;
@@ -22,15 +23,23 @@ const SingleProduct = () => {
   const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   const handleAddToCart = () => {
-    const product = {
-      product: productData?._id,
-      name: productData?.name,
-      imageUrl: productData?.imageUrl,
-      price: productData?.price,
-      quantity,
-    };
-    dispatch(addToCart(product));
-    message.success("Added to cart successfully");
+    if (user) {
+      if (user.userRole == "user") {
+        const product = {
+          product: productData?._id,
+          name: productData?.name,
+          price: productData?.price,
+          imageUrl: productData?.imageUrl,
+          quantity,
+        };
+        dispatch(addToCart(product));
+        message.success("Added to cart successfully");
+      } else {
+        message.warning("Ops! admin cannot Order");
+      }
+    } else {
+      message.info("You have to login first to add products");
+    }
   };
 
   return (
@@ -77,39 +86,36 @@ const SingleProduct = () => {
                       </p>
                     </div>
                   </div>
-                  {user?.userRole === "user" && (
-                    <>
-                      <div className="flex items-center mt-4">
-                        <Button
-                          onClick={handleDecrease}
-                          className="!bg-gray-100  !text-black"
-                        >
-                          -
-                        </Button>
 
-                        <InputNumber
-                          min={1}
-                          value={quantity}
-                          onChange={(value) => setQuantity(value || 1)}
-                          className="w-16 text-center"
-                        />
+                  <div className="flex items-center mt-4">
+                    <Button
+                      onClick={handleDecrease}
+                      className="!bg-gray-100  !text-black"
+                    >
+                      -
+                    </Button>
 
-                        <Button
-                          onClick={handleIncrease}
-                          className="!bg-gray-100  !text-black"
-                        >
-                          +
-                        </Button>
-                      </div>
-                      <Button
-                        type="primary"
-                        className="w-36 btn mt-2"
-                        onClick={handleAddToCart}
-                      >
-                        Add to Cart
-                      </Button>
-                    </>
-                  )}
+                    <InputNumber
+                      min={1}
+                      value={quantity}
+                      onChange={(value) => setQuantity(value || 1)}
+                      className="w-16 text-center"
+                    />
+
+                    <Button
+                      onClick={handleIncrease}
+                      className="!bg-gray-100  !text-black"
+                    >
+                      +
+                    </Button>
+                  </div>
+                  <Button
+                    type="primary"
+                    className="w-36 btn mt-2"
+                    onClick={handleAddToCart}
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
                 <div className="col-span-full md:col-span-4">
                   <Image

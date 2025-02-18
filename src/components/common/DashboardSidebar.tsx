@@ -3,6 +3,13 @@ import { jwtDecode } from "jwt-decode";
 import { useAppSelector } from "../../redux/hooks";
 import { TUser, useCurrentToken } from "../../redux/feature/auth/authSlice";
 import { Link } from "react-router-dom";
+import { FaRegUser } from "react-icons/fa";
+import { AiOutlineProduct } from "react-icons/ai";
+import { RiTruckLine } from "react-icons/ri";
+import { LuUsers } from "react-icons/lu";
+import { IoHomeOutline } from "react-icons/io5";
+import { FiShoppingCart } from "react-icons/fi";
+import { MdOutlineShoppingBag } from "react-icons/md";
 
 const { Sider } = Layout;
 
@@ -27,22 +34,27 @@ const DashboardSidebar = () => {
       sidebarItems = [
         {
           key: "profile",
+          icon: <FaRegUser />,
           label: <Link to={"/admin/dashboard/profile"}>Profile</Link>,
         },
         {
           key: "products",
+          icon: <AiOutlineProduct />,
           label: <Link to={"/admin/dashboard/products"}>Products</Link>,
         },
         {
           key: "Order",
+          icon: <RiTruckLine />,
           label: <Link to={"/admin/dashboard/all-orders"}>All Orders</Link>,
         },
         {
           key: "users",
+          icon: <LuUsers />,
           label: <Link to={"/admin/dashboard/user-details"}>User</Link>,
         },
         {
           key: "homepage",
+          icon: <IoHomeOutline />,
           label: <Link to={"/"}>Homepage</Link>,
         },
       ];
@@ -51,18 +63,22 @@ const DashboardSidebar = () => {
       sidebarItems = [
         {
           key: "profile",
+          icon: <FaRegUser />,
           label: <Link to={"/user/dashboard/profile"}>Profile</Link>,
         },
         {
           key: "cart",
+          icon: <FiShoppingCart />,
           label: <Link to={"/user/dashboard/cart"}>Cart</Link>,
         },
         {
           key: "orders",
+          icon: <MdOutlineShoppingBag />,
           label: <Link to={"/user/dashboard/orders"}>Orders</Link>,
         },
         {
           key: "homepage",
+          icon: <IoHomeOutline />,
           label: <Link to={"/"}>Homepage</Link>,
         },
       ];

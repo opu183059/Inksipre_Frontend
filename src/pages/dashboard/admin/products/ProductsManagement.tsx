@@ -98,12 +98,6 @@ const ProductsManagement = () => {
 
   const columns: ColumnsType<productType> = [
     {
-      title: "SL",
-      key: "serial",
-      render: (_text, _record, index) => index + 1,
-      fixed: "left",
-    },
-    {
       title: "Image",
       dataIndex: "imageUrl",
       key: "imageUrl",
@@ -201,7 +195,7 @@ const ProductsManagement = () => {
           <Table
             columns={columns}
             dataSource={products}
-            pagination={false}
+            pagination={{ pageSize: 10 }}
             rowKey="_id"
             scroll={{ x: "max-content" }}
           />
