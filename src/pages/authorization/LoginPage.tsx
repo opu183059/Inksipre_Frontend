@@ -5,6 +5,8 @@ import { useLoginMutation } from "../../redux/feature/auth/authApi";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/feature/auth/authSlice";
 import { jwtDecode } from "jwt-decode";
+import Lottie from "lottie-react";
+import animation from "../../assets/animation_lk7w5ouy.json";
 
 const LoginPage = () => {
   const [login, { error }] = useLoginMutation();
@@ -38,12 +40,16 @@ const LoginPage = () => {
     }
   };
   return (
-    <div className="container min-h-screen py-10 flex items-center justify-center">
+    <div className="container min-h-screen py-10 flex gap-5 items-center justify-center">
+      <div className="hidden md:block md:w-1/2">
+        <Lottie animationData={animation} style={{ width: 400, height: 400 }} />
+      </div>
       <Form
         name="login"
         initialValues={{ remember: true }}
         style={{ maxWidth: 360 }}
         onFinish={onFinish}
+        className="md:w-1/2"
       >
         <Form.Item
           hasFeedback
@@ -53,7 +59,7 @@ const LoginPage = () => {
             { required: true, message: "Please input your Email!" },
           ]}
         >
-          <Input prefix={<MailOutlined />} placeholder="Email" />
+          <Input prefix={<MailOutlined />} placeholder="Email" size="large" />
         </Form.Item>
         <Form.Item
           name="password"
@@ -63,10 +69,11 @@ const LoginPage = () => {
             prefix={<LockOutlined />}
             type="password"
             placeholder="Password"
+            size="large"
           />
         </Form.Item>
         <Form.Item className="text-primary">
-          <Button block type="primary" htmlType="submit">
+          <Button block type="primary" htmlType="submit" size="large">
             Log in
           </Button>
           or <Link to={"/register"}>Register now!</Link>

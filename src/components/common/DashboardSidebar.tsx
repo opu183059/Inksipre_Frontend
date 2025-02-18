@@ -95,7 +95,7 @@ const DashboardSidebar = () => {
       className="h-screen sticky top-0 left-0 text-gray-50"
     >
       <div className="h-[4rem] flex justify-center items-center text-gray-50">
-        <h1>Inkspire</h1>
+        <h1 className="hidden md:block">Inkspire</h1>
       </div>
 
       <Menu
