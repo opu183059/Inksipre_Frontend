@@ -12,9 +12,12 @@ const Banner = () => {
               Inkspire
             </h1>
             <p className="text-gray-50 text-base md:text-lg mt-4 flex justify-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-              euismod bibendum laoreet. Proin gravida dolor sit amet lacus
-              accumsan et viverra justo commodo.
+              Your one-stop destination for high-quality stationery products,
+              office supplies, and creative essentials. Whether you are a
+              student, professional, artist, or business owner, we provide a
+              carefully curated selection of products designed to inspire
+              creativity, enhance productivity, and meet all your everyday
+              needs.
             </p>
             <Link to={"/products"}>
               <Button type="primary" className="btn10 mt-4">

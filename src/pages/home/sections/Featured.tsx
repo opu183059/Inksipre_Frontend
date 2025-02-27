@@ -16,7 +16,7 @@ const Featured = () => {
       ) : (
         <div className="pb-10">
           <p className="text-center text-2xl font-playwrite font-bold mb-6">
-            New Arrivals
+            Latest Arrivals
           </p>
           <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
             {products.map((product: productType) => (

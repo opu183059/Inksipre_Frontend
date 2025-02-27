@@ -17,11 +17,11 @@ const Footer = () => {
             <Logo />
           </div>
           <p className="mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            euismod bibendum laoreet. Proin gravida dolor sit amet lacus
-            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
-            Cum sociis natoque penatibus et magnis dis parturient montes,
-            nascetur ridiculus mus.
+            Your one-stop destination for high-quality stationery products,
+            office supplies, and creative essentials. Whether you are a student,
+            professional, artist, or business owner, we provide a carefully
+            curated selection of products designed to inspire creativity,
+            enhance productivity, and meet all your everyday needs.
           </p>
         </div>
         <div className="right flex md:w-4/12 md:justify-end justify-around gap-6 mt-4 md:mt-0">

@@ -3,6 +3,7 @@ import Categories from "./sections/Categories";
 import Featured from "./sections/Featured";
 import HowToOrder from "./sections/HowToOrder";
 import Products from "./sections/Products";
+import Subscribe from "./sections/Subscribe";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Featured />
       <HowToOrder />
       <Products />
+      <Subscribe />
     </>
   );
 };

@@ -13,7 +13,7 @@ const ProductCard = ({ productData }: { productData: productCardProps }) => {
       {isNew ? (
         <Badge.Ribbon text="New" color="pink">
           <Link to={`/products/${_id}`}>
-            <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer">
+            <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer category-card">
               <img
                 src={imageUrl}
                 alt=""
@@ -38,7 +38,7 @@ const ProductCard = ({ productData }: { productData: productCardProps }) => {
         </Badge.Ribbon>
       ) : (
         <Link to={`/products/${_id}`}>
-          <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer">
+          <div className="border rounded-md overflow-hidden border-gray-600 cursor-pointer category-card">
             <img
               src={imageUrl}
               alt=""
